@@ -18,14 +18,17 @@ class SliderScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Slider Example'),
       ),
-      body: ListView(
+      body: Column(
+        mainAxisAlignment:MainAxisAlignment.center,
         children: [
           Row(
             mainAxisAlignment:MainAxisAlignment.spaceAround,
             children: [
               const Text('Click'),
               BlocBuilder<SliderBloc, SliderStates>(
+                buildWhen: (previous,current)=>previous.isSwitch!=current.isSwitch,
                 builder: (context, state) {
+               print('object');
                   return Switch(value:state.isSwitch, onChanged: (val) {
                     context.read<SliderBloc>().add(EnableDisableButton());
                     if (kDebugMode) {
@@ -41,23 +44,21 @@ class SliderScreen extends StatelessWidget {
           BlocBuilder<SliderBloc, SliderStates>(
             builder: (context, state) {
               return Container(
-                width:200,
+                width:400,
                 height:150,
                 color:Colors.lightBlue.withOpacity(state.slider),
               );
             },
           ),
           BlocBuilder<SliderBloc, SliderStates>(
+            buildWhen: (previous,current)=>previous.slider!=current.slider,
             builder: (context, state) {
+              print('slider');
               return Slider(value:state.slider, onChanged: (val) {
                 context.read<SliderBloc>().add(SliderValueChanges(value:val));
-                if (kDebugMode) {
-                  print(val.toString());
-                }
-
               });
             },
-          )
+          ),
         ],
       ),
     );
