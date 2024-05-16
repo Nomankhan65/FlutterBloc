@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterbloc/ui/counter_screen.dart';
+import 'package:flutterbloc/ui/favorite_screen.dart';
 import 'package:flutterbloc/ui/slider_screen.dart';
 import 'package:flutterbloc/ui/todo_screen.dart';
 
@@ -43,6 +44,16 @@ class HomeScreen extends StatelessWidget {
               trailing:const Icon(Icons.arrow_forward_ios_outlined),
               onTap:(){
                 Navigator.push(context,MaterialPageRoute(builder: (_)=>const TodoScreen()));
+              },
+            ),
+          ),
+          Card(
+            child: ListTile(
+              title:const Text('Bloc Example Four'),
+              subtitle:const Text('Favorite'),
+              trailing:const Icon(Icons.arrow_forward_ios_outlined),
+              onTap:(){
+                Navigator.push(context,MaterialPageRoute(builder: (_)=> const FavoriteScreen()));
               },
             ),
           )
