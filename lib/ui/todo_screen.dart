@@ -12,7 +12,7 @@ class TodoScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return  Scaffold(
       floatingActionButton:FloatingActionButton(onPressed: (){
-        for(int i=0; i<3; i++){
+        for(int i=0; i<2; i++){
           context.read<TodoBloc>().add(AddItems(task:'Task : $i'));
         }
 
@@ -36,7 +36,9 @@ class TodoScreen extends StatelessWidget {
             itemBuilder: (context,index){
           return ListTile(
             title:Text(state.todoList[index].toString()),
-            trailing:IconButton(onPressed: (){}
+            trailing:IconButton(onPressed: (){
+              context.read<TodoBloc>().add(RemoveItems(task:state.todoList[index]));
+            }
                 , icon: const Icon(Icons.delete)),
           );
         });

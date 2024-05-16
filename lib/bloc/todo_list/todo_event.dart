@@ -10,13 +10,14 @@ class AddItems extends TodoEvents{
   const AddItems({required this.task});
   @override
   // TODO: implement props
-  List<Object?> get props => [];
+  List<Object?> get props => [task];
 
 }
 
 class RemoveItems extends TodoEvents{
+  final Object task;
+  const RemoveItems({required this.task});
   @override
-  // TODO: implement props
-  List<Object?> get props => [];
+  List<Object?> get props => [task];
 
 }
