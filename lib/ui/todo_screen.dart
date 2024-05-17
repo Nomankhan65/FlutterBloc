@@ -10,12 +10,11 @@ class TodoScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('build');
     return  Scaffold(
       floatingActionButton:FloatingActionButton(onPressed: (){
-        for(int i=0; i<2; i++){
-          context.read<TodoBloc>().add(AddItems(task:'Task : $i'));
-        }
 
+          context.read<TodoBloc>().add(const AddItems(task:'Task4 '));
       },
       child:const Icon(Icons.add),
       ),
@@ -26,22 +25,22 @@ class TodoScreen extends StatelessWidget {
         if(state.todoList.isEmpty){
           return const Center(child:Text('No items found'),);
         }else if(state.todoList.isNotEmpty){
-
+          return ListView.builder
+            (
+              itemCount:state.todoList.length,
+              itemBuilder: (context,index){
+                return ListTile(
+                  title:Text(state.todoList[index].toString()),
+                  trailing:IconButton(onPressed: (){
+                    context.read<TodoBloc>().add(RemoveItems(task:state.todoList[index]));
+                  }
+                      , icon: const Icon(Icons.delete)),
+                );
+              });
         }else{
           return const SizedBox();
         }
-        return ListView.builder
-          (
-            itemCount:state.todoList.length,
-            itemBuilder: (context,index){
-          return ListTile(
-            title:Text(state.todoList[index].toString()),
-            trailing:IconButton(onPressed: (){
-              context.read<TodoBloc>().add(RemoveItems(task:state.todoList[index]));
-            }
-                , icon: const Icon(Icons.delete)),
-          );
-        });
+
       }),
     );
   }

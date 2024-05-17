@@ -5,7 +5,7 @@ class FavRepository{
   Future<List<FavoriteListModel>> fetchList()async{
 
     await Future.delayed(const Duration(seconds:3));
-    return List.of(generateList(10));
+    return List.of(generateList(7));
   }
 
   List<FavoriteListModel> generateList(int length){

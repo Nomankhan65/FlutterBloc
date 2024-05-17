@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterbloc/bloc/favorite/favorite_block.dart';
 import 'package:flutterbloc/bloc/favorite/favorite_events.dart';
 import 'package:flutterbloc/bloc/favorite/favorite_states.dart';
+import 'package:flutterbloc/model/favorite_list_model.dart';
 
 class FavoriteScreen extends StatefulWidget {
   const FavoriteScreen({super.key});
@@ -28,10 +29,26 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
             return const Text('something went wrong');
           case ListStates.success:
             return ListView.builder(
-                itemCount: state.favoriteListModel.length,
+                itemCount: state.favoriteList.length,
                 itemBuilder: (context,index){
-                  return ListTile(
-                    title:Text(state.favoriteListModel[index].value.toString()),
+                  final item=state.favoriteList[index];
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(horizontal:15,vertical:3),
+                    child: Card(
+                      child: ListTile(
+                        title:Text(item.value),
+                        trailing:IconButton(onPressed: (){
+
+                          FavoriteListModel favoriteListModel=FavoriteListModel(
+                            id:item.id,
+                            value: item.value,
+                            isFav:item.isFav?false:true
+                          );
+                          context.read<FavoriteBloc>().add(FavoriteItems(item: favoriteListModel));
+
+                        }, icon:Icon(item.isFav?Icons.favorite:Icons.favorite_outline)),
+                      ),
+                    ),
                   );
                 });
           default:
