@@ -20,6 +20,16 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
     return Scaffold(
       appBar:AppBar(
         title:const Text('Favorite'),
+        actions: [
+          BlocBuilder<FavoriteBloc,FavoriteStates>(builder: (context,state){
+            return  Visibility(
+                visible:state.temFavoriteList.isNotEmpty?true:false,
+                child:IconButton(onPressed: (){
+                  context.read<FavoriteBloc>().add(DeleteItems());
+                }, icon: const Icon(Icons.delete,color:Colors.red,)));
+          })
+
+        ],
       ),
       body:BlocBuilder<FavoriteBloc,FavoriteStates>(builder: (BuildContext context,state){
         switch(state.listStates){
@@ -36,9 +46,16 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                     padding: const EdgeInsets.symmetric(horizontal:15,vertical:3),
                     child: Card(
                       child: ListTile(
+                        leading:Checkbox(value:state.temFavoriteList.contains(item)?true:false, onChanged:(value){
+                          if(value!){
+                            context.read<FavoriteBloc>().add(SelectItems(item: item));
+                          }else{
+                            context.read<FavoriteBloc>().add(UnSelectItems(item: item));
+                          }
+                          
+                        }),
                         title:Text(item.value),
                         trailing:IconButton(onPressed: (){
-
                           FavoriteListModel favoriteListModel=FavoriteListModel(
                             id:item.id,
                             value: item.value,
