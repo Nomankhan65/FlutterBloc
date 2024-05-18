@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterbloc/bloc/counter/counter_bloc.dart';
 import 'package:flutterbloc/bloc/favorite/favorite_block.dart';
 import 'package:flutterbloc/bloc/favorite/favorite_events.dart';
+import 'package:flutterbloc/bloc/post/post_block.dart';
 import 'package:flutterbloc/bloc/slider/slider_bloc.dart';
 import 'package:flutterbloc/bloc/todo_list/todo_block.dart';
 import 'package:flutterbloc/home_screen.dart';
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
       BlocProvider(create: (_)=>SliderBloc()),
       BlocProvider(create: (_)=>TodoBloc()),
       BlocProvider(create: (_)=>FavoriteBloc(FavRepository())..add(FetchFavoriteList())),
+      BlocProvider(create: (_)=>PostBloc()),
 
     ], child: MaterialApp(
       title: 'Flutter Demo',

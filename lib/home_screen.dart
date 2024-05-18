@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterbloc/ui/counter_screen.dart';
 import 'package:flutterbloc/ui/favorite_screen.dart';
+import 'package:flutterbloc/ui/login_screen.dart';
+import 'package:flutterbloc/ui/postApi_screen.dart';
 import 'package:flutterbloc/ui/slider_screen.dart';
 import 'package:flutterbloc/ui/todo_screen.dart';
 
@@ -54,6 +56,27 @@ class HomeScreen extends StatelessWidget {
               trailing:const Icon(Icons.arrow_forward_ios_outlined),
               onTap:(){
                 Navigator.push(context,MaterialPageRoute(builder: (_)=> const FavoriteScreen()));
+              },
+            ),
+          ),
+          Card(
+            child: ListTile(
+              title:const Text('Bloc Example Five'),
+              subtitle:const Text('Get postApi'),
+              trailing:const Icon(Icons.arrow_forward_ios_outlined),
+              onTap:(){
+                Navigator.push(context,MaterialPageRoute(builder: (_)=> const PostApiScreen()));
+              },
+            ),
+          ),
+
+          Card(
+            child: ListTile(
+              title:const Text('Bloc Example Six'),
+              subtitle:const Text('Login Api'),
+              trailing:const Icon(Icons.arrow_forward_ios_outlined),
+              onTap:(){
+                Navigator.push(context,MaterialPageRoute(builder: (_)=> const LoginScreen()));
               },
             ),
           )
