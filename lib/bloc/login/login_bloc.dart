@@ -20,7 +20,7 @@ class LoginBloc extends Bloc<LoginEvent,LoginState>{
 
   void _passwordChanged(PasswordChanged event,Emitter<LoginState> emitter){
 
-    emitter(state.copyWith(password:event.password));
+    emitter(state.copyWith(password :event.password));
   }
 
   void _loginApi(LoginApi event,Emitter<LoginState> emitter)async{
