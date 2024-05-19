@@ -10,19 +10,15 @@ class LoginBloc extends Bloc<LoginEvent,LoginState>{
    on<EmailChanged>(_emailChanged);
    on<PasswordChanged>(_passwordChanged);
    on<LoginApi>(_loginApi);
-
   }
-
   void _emailChanged(EmailChanged event,Emitter<LoginState> emitter){
 
     emitter(state.copyWith(email:event.email));
   }
-
   void _passwordChanged(PasswordChanged event,Emitter<LoginState> emitter){
 
     emitter(state.copyWith(password :event.password));
   }
-
   void _loginApi(LoginApi event,Emitter<LoginState> emitter)async{
     emitter(state.copyWith(
       loginStatus:LoginStatus.loading,
