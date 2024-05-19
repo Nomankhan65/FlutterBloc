@@ -1,16 +1,4 @@
-# flutterbloc
+# Bloc state management
 
-A new Flutter project.
+ ![Screenshot 2024-05-19 143605](https://github.com/Nomankhan65/FlutterBloc/assets/139708603/c25b7712-0d64-4355-8750-e76e72bd98d0)
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
